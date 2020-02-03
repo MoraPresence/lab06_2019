@@ -34,7 +34,8 @@ void mythreads::makeHash() {
 
 
 void mythreads::startLogging() {
-    if (_threadCount >= 1 && _threadCount <= std::thread::hardware_concurrency()) {
+    if (_threadCount >= 1 && 
+	_threadCount <= std::thread::hardware_concurrency()) {
         std::vector<std::thread> threads;
         threads.reserve(_threadCount);
         std::thread thr(mythreads::makeHash);
@@ -44,7 +45,8 @@ void mythreads::startLogging() {
         thr.join();
         thr1.join();
         thr2.join();
-    } else return;
+    } else 
+		return;
 }
 
 int main() {
