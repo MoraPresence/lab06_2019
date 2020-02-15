@@ -45,13 +45,11 @@ public:
     static void logInFile();
 
     static std::size_t _threadCount;
-    static std::string correctEND;
     static std::atomic_uint infoCount;
     static std::size_t currentCount;
     static std::mutex mute;
 };
 
-std::string mythreads::correctEND = "0000";
 std::size_t mythreads::_threadCount = std::thread::hardware_concurrency();
 std::atomic_uint mythreads::infoCount = 0;
 std::size_t mythreads::currentCount = 0;

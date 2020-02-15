@@ -10,7 +10,7 @@ std::string mythreads::get_hash() {
 
 
 bool mythreads::checkHash(const std::string &hash) {
-    return hash.substr(hash.size() - correctEND.size()) == correctEND;
+    return hash.substr(hash.size() - std::string("0000").size()) == "0000";
 }
 
 
@@ -86,8 +86,7 @@ void mythreads::logInFile() {
                                             ::second_clock::local_time()
                                             << " : <" << logging
                                             ::trivial::severity
-                                            << "> " << expr::smessage
-                            ));
+                                            << "> " << expr::smessage ));
 
     logging::add_file_log
             (
@@ -104,6 +103,5 @@ void mythreads::logInFile() {
                                             ::second_clock::local_time()
                                             << " : <" << logging::
                                             trivial::severity
-                                            << "> " << expr::smessage
-                            ));
+                                            << "> " << expr::smessage ));
 }
