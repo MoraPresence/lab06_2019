@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
-#include "picosha2.hpp"
+#include <picosha2.h>
 #include <future>
 #include <thread>
 #include <vector>
