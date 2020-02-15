@@ -34,10 +34,21 @@ add_library(template STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
 
+# TODO: change template word to project name and delete this comment
+add_library(template STATIC
+        # enum your files and delete this comment
+        ${CMAKE_CURRENT_SOURCE_DIR}/third-party/picosha2.h
+        )
+
 add_executable(tests
   # TODO: enum your files and delete this comment
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
 )
+
+add_executable(picosha2
+        # TODO: enum your files and delete this comment
+        ${CMAKE_CURRENT_SOURCE_DIR}/third-party/picosha2.h
+        )
 
 # TODO: change template word to project name and delete this comment
 target_include_directories(template
@@ -58,6 +69,7 @@ if(BUILD_COVERAGE)
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
   add_coverage(template)
+  add_coverage(picosha2)
   add_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()
