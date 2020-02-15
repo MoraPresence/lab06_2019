@@ -86,7 +86,7 @@ void mythreads::logInFile() {
                                             ::second_clock::local_time()
                                             << " : <" << logging
                                             ::trivial::severity
-                                            << "> " << expr::smessage ));
+                                            << "> " << expr::smessage));
 
     logging::add_file_log
             (
@@ -103,5 +103,5 @@ void mythreads::logInFile() {
                                             ::second_clock::local_time()
                                             << " : <" << logging::
                                             trivial::severity
-                                            << "> " << expr::smessage ));
+                                            << "> " << expr::smessage));
 }
