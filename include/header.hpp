@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include <ctime>
 #include <picosha2.h>
 #include <future>

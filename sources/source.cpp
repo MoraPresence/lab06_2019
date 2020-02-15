@@ -42,8 +42,9 @@ void mythreads::startLogging() {
         for (auto &th : threads) {
             th.join();
         }
-    } else
+    } else{
         return;
+    }
 }
 
 
@@ -76,12 +77,15 @@ void mythreads::logInFile() {
                     keywords::time_based_rotation =
                             sinks::file::rotation_at_time_point(0, 0, 0),
                     keywords::filter =
-                            logging::trivial::severity >= logging::trivial::info,
+                            logging::trivial::severity
+                            >= logging::trivial::info,
                     keywords::format =
                             (
                                     expr::stream
-                                            << boost::posix_time::second_clock::local_time()
-                                            << " : <" << logging::trivial::severity
+                                            << boost::posix_time
+                                            ::second_clock::local_time()
+                                            << " : <" << logging
+                                            ::trivial::severity
                                             << "> " << expr::smessage
                             ));
 
@@ -89,13 +93,17 @@ void mythreads::logInFile() {
             (
                     keywords::file_name = "/home/mora/Desktop/trace.log",
                     keywords::rotation_size = 256 * 1024 * 1024,
-                    keywords::time_based_rotation = sinks::file::rotation_at_time_point(0, 0, 0),
-                    keywords::filter = logging::trivial::severity >= logging::trivial::trace,
+                    keywords::time_based_rotation = sinks::file
+                            ::rotation_at_time_point(0, 0, 0),
+                    keywords::filter = logging::trivial::severity
+                            >= logging::trivial::trace,
                     keywords::format =
                             (
                                     expr::stream
-                                            << boost::posix_time::second_clock::local_time()
-                                            << " : <" << logging::trivial::severity
+                                            << boost::posix_time
+                                            ::second_clock::local_time()
+                                            << " : <" << logging::
+                                            trivial::severity
                                             << "> " << expr::smessage
                             ));
 }
