@@ -35,7 +35,7 @@ add_library(template STATIC
 )
 
 # TODO: change template word to project name and delete this comment
-add_library(template STATIC
+add_library(picosha2 STATIC
         # enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/third-party/picosha2.h
         )
