@@ -72,7 +72,7 @@ namespace sinks = boost::log::sinks;
 void mythreads::logInFile() {
     logging::add_file_log
             (
-                    keywords::file_name = "/home/mora/Desktop/info.log",
+                    keywords::file_name = "/logs/info.log",
                     keywords::rotation_size = 256 * 1024 * 1024,
                     keywords::time_based_rotation =
                             sinks::file::rotation_at_time_point(0, 0, 0),
@@ -90,7 +90,7 @@ void mythreads::logInFile() {
 
     logging::add_file_log
             (
-                    keywords::file_name = "/home/mora/Desktop/trace.log",
+                    keywords::file_name = "/logs/trace.log",
                     keywords::rotation_size = 256 * 1024 * 1024,
                     keywords::time_based_rotation = sinks::file
                             ::rotation_at_time_point(0, 0, 0),
