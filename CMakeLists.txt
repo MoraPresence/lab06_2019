@@ -48,20 +48,10 @@ target_include_directories(tests
 )
 
 target_include_directories(
-        header
-        INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-target_include_directories(
         picosha2
         INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
-target_include_directories(
-        logs
-        INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 target_link_libraries(source picosha2 logs)
-target_link_libraries(logs INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
-target_link_libraries(header INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
 
 target_link_libraries(tests GTest::main template)
 enable_testing()
