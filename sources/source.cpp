@@ -105,3 +105,11 @@ void mythreads::logInFile() {
                                             trivial::severity
                                             << "> " << expr::smessage));
 }
+
+
+int main() {
+    ++mythreads::currentCount;
+    mythreads ths(4);
+    ths.startLogging();
+    return 0;
+}
