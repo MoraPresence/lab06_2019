@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
-#include "picosha2.h"
+#include "picosha2.hpp"
 #include <future>
 #include <thread>
 #include <vector>
@@ -20,8 +20,6 @@
 #include <boost/log/utility/setup/console.hpp>
 #include <boost/log/utility/setup/common_attributes.hpp>
 #include <boost/log/sinks.hpp>
-#include <ctime>
-#include <cstdlib>
 
 class mythreads {
 public:

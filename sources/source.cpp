@@ -32,7 +32,8 @@ void mythreads::makeHash() {
 
 
 void mythreads::startLogging() {
-    if (_threadCount >= 1 && _threadCount <= std::thread::hardware_concurrency()) {
+    if (_threadCount >= 1 && _threadCount
+    <= std::thread::hardware_concurrency()) {
         std::vector<std::thread> threads;
         threads.reserve(_threadCount);
         for (size_t i = 0; i < _threadCount; ++i) {
@@ -41,7 +42,8 @@ void mythreads::startLogging() {
         for (auto &th : threads) {
             th.join();
         }
-    } else return;
+    } else
+        return;
 }
 
 
@@ -71,16 +73,17 @@ void mythreads::logInFile() {
             (
                     keywords::file_name = "/home/mora/Desktop/info.log",
                     keywords::rotation_size = 256 * 1024 * 1024,
-                    keywords::time_based_rotation = sinks::file::rotation_at_time_point(0, 0, 0),
-                    keywords::filter = logging::trivial::severity >= logging::trivial::info,
+                    keywords::time_based_rotation =
+                            sinks::file::rotation_at_time_point(0, 0, 0),
+                    keywords::filter =
+                            logging::trivial::severity >= logging::trivial::info,
                     keywords::format =
                             (
                                     expr::stream
                                             << boost::posix_time::second_clock::local_time()
                                             << " : <" << logging::trivial::severity
                                             << "> " << expr::smessage
-                            )
-            );
+                            ));
 
     logging::add_file_log
             (
@@ -94,6 +97,5 @@ void mythreads::logInFile() {
                                             << boost::posix_time::second_clock::local_time()
                                             << " : <" << logging::trivial::severity
                                             << "> " << expr::smessage
-                            )
-            );
+                            ));
 }
