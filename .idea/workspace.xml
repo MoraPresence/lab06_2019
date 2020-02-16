@@ -11,7 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8d426765-0caa-4344-a3f4-cc6e6f45bf62" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/checks.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/checks.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,7 +53,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581771716686</updated>
-      <workItem from="1581771718387" duration="14255000" />
+      <workItem from="1581771718387" duration="14875000" />
+      <workItem from="1581841564410" duration="235000" />
     </task>
     <servers />
   </component>
@@ -65,7 +66,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

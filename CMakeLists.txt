@@ -33,6 +33,9 @@ string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 hunter_add_package(Boost COMPONENTS filesystem log system thread)
 
+hunter_add_package(GTest)
+find_package(GTest CONFIG REQUIRED)
+
 find_package(Boost CONFIG REQUIRED filesystem log log_setup system thread)
 find_package(Threads)
 
@@ -46,6 +49,13 @@ target_include_directories(
         PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+target_include_directories(tests
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+        )
+target_link_libraries(tests GTest::main template)
+
+enable_testing()
+add_test(NAME unit_tests COMMAND tests)
 
 target_link_libraries(
         ${PROJECT_NAME}
