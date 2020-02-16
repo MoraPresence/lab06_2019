@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.4)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -28,40 +27,50 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
-find_package(Boost CONFIG REQUIRED filesystem log log_setup system thread)
-find_package(Threads)
+hunter_add_package(Boost COMPONENTS log thread filesystem system)
+find_package(Boost CONFIG REQUIRED log thread filesystem system)
 
+add_library(picosha2 INTERFACE
+        )
+add_library(logs INTERFACE
+        )
+add_library(header INTERFACE
+        )
+# TODO: change template word to project name and delete this comment
+add_library(template STATIC
+        # enum your files and delete this comment
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
+        )
 add_executable(tests
         # TODO: enum your files and delete this comment
         ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
         )
 
-add_executable(
-        ${PROJECT_NAME}
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
-)
-
+# TODO: change template word to project name and delete this comment
+target_include_directories(template
+        PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+        )
 target_include_directories(tests
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
+# TODO: change template word to project name and delete this comment
+target_link_libraries(tests GTest::main template)
 
 target_include_directories(
-        ${PROJECT_NAME}
-        PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
-
-target_link_libraries(tests GTest::main ${PROJECT_NAME})
-
-target_link_libraries(
-        ${PROJECT_NAME}
-        ${CMAKE_THREAD_LIBS_INIT}
-        Boost::log_setup
-        Boost::log
-        Boost::thread
-        Boost::filesystem
-        Boost::system
-)
+        header
+        INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+target_include_directories(
+        picosha2
+        INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+target_include_directories(
+        logs
+        INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+target_link_libraries(source picosha2 logs)
+target_link_libraries(logs INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
+target_link_libraries(header INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
