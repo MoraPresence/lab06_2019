@@ -27,8 +27,8 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
-hunter_add_package(Boost COMPONENTS log thread filesystem system)
-find_package(Boost CONFIG REQUIRED log thread filesystem system)
+hunter_add_package(Boost COMPONENTS log thread)
+find_package(Boost CONFIG REQUIRED log thread)
 
 add_library(picosha2 INTERFACE
         )
@@ -69,8 +69,8 @@ target_include_directories(
         INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 target_link_libraries(template Boost::log)
-target_link_libraries(logs INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
-target_link_libraries(header INTERFACE Boost::log Boost::thread Boost::filesystem Boost::system)
+target_link_libraries(logs INTERFACE Boost::log Boost::thread)
+target_link_libraries(header INTERFACE Boost::log Boost::thread)
 
 enable_testing()
 add_test(NAME unit_tests COMMAND tests)
